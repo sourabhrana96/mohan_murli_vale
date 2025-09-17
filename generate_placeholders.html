@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Placeholder Images</title>
+</head>
+<body>
+    <h1>Placeholder Image Generator</h1>
+    <p>This page will generate placeholder images for the website. Right-click and save each image below:</p>
+    
+    <div style="margin: 20px 0;">
+        <h3>Hero Image (800x600)</h3>
+        <canvas id="hero" width="800" height="600" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('hero', 'hero-image.jpg')">Download Hero Image</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>About Preview (600x400)</h3>
+        <canvas id="about" width="600" height="400" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('about', 'about-preview.jpg')">Download About Image</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Our Story (500x400)</h3>
+        <canvas id="story" width="500" height="400" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('story', 'our-story.jpg')">Download Story Image</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Service Images (400x200 each)</h3>
+        <canvas id="service1" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service1', 'service-consulting.jpg')">Download Consulting</button>
+        <br><br>
+        <canvas id="service2" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service2', 'service-development.jpg')">Download Development</button>
+        <br><br>
+        <canvas id="service3" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service3', 'service-support.jpg')">Download Support</button>
+        <br><br>
+        <canvas id="service4" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service4', 'service-training.jpg')">Download Training</button>
+        <br><br>
+        <canvas id="service5" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service5', 'service-analysis.jpg')">Download Analysis</button>
+        <br><br>
+        <canvas id="service6" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('service6', 'service-compliance.jpg')">Download Compliance</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Icons (60x60 each)</h3>
+        <canvas id="icon1" width="60" height="60" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon1', 'quality-icon.png')">Download Quality Icon</button>
+        <br><br>
+        <canvas id="icon2" width="60" height="60" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon2', 'reliability-icon.png')">Download Reliability Icon</button>
+        <br><br>
+        <canvas id="icon3" width="60" height="60" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon3', 'expertise-icon.png')">Download Expertise Icon</button>
+        <br><br>
+        <canvas id="icon4" width="40" height="40" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon4', 'email-icon.png')">Download Email Icon</button>
+        <br><br>
+        <canvas id="icon5" width="40" height="40" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon5', 'phone-icon.png')">Download Phone Icon</button>
+        <br><br>
+        <canvas id="icon6" width="40" height="40" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon6', 'location-icon.png')">Download Location Icon</button>
+        <br><br>
+        <canvas id="icon7" width="40" height="40" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('icon7', 'hours-icon.png')">Download Hours Icon</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Map Placeholder (800x400)</h3>
+        <canvas id="map" width="800" height="400" style="border: 1px solid #ccc;"></canvas>
+        <br><button onclick="downloadCanvas('map', 'map-placeholder.jpg')">Download Map</button>
+    </div>
+
+    <script>
+        function drawPlaceholder(canvasId, text, bgColor, textColor) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Text
+            ctx.fillStyle = textColor;
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, canvas.width/2, canvas.height/2);
+        }
+        
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate all placeholders
+        window.onload = function() {
+            // Hero image
+            drawPlaceholder('hero', 'Professional Services', '#667eea', 'white');
+            
+            // About preview
+            drawPlaceholder('about', 'About Us', '#3498db', 'white');
+            
+            // Story
+            drawPlaceholder('story', 'Our Story', '#2c3e50', 'white');
+            
+            // Services
+            drawPlaceholder('service1', 'Professional Consulting', '#e74c3c', 'white');
+            drawPlaceholder('service2', 'Project Development', '#f39c12', 'white');
+            drawPlaceholder('service3', 'Technical Support', '#27ae60', 'white');
+            drawPlaceholder('service4', 'Training & Education', '#8e44ad', 'white');
+            drawPlaceholder('service5', 'Data Analysis', '#34495e', 'white');
+            drawPlaceholder('service6', 'Compliance & Audit', '#e67e22', 'white');
+            
+            // Icons
+            drawPlaceholder('icon1', 'Q', '#27ae60', 'white');
+            drawPlaceholder('icon2', 'R', '#3498db', 'white');
+            drawPlaceholder('icon3', 'E', '#e74c3c', 'white');
+            drawPlaceholder('icon4', '@', '#3498db', 'white');
+            drawPlaceholder('icon5', '📞', '#27ae60', 'white');
+            drawPlaceholder('icon6', '📍', '#e74c3c', 'white');
+            drawPlaceholder('icon7', '🕒', '#f39c12', 'white');
+            
+            // Map
+            drawPlaceholder('map', 'Interactive Map', '#95a5a6', 'white');
+        };
+    </script>
+</body>
+</html>
